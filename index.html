@@ -53,6 +53,7 @@
             height: 100vh;
         }
 
+        /* ================= پس‌زمینه ================= */
         .background-layer {
             position: fixed;
             inset: 0;
@@ -94,6 +95,7 @@
             75% { transform: translate(40px, 20px) scale(1.05); }
         }
 
+        /* ================= نوار بالایی ================= */
         .top-bar {
             display: flex;
             justify-content: flex-start;
@@ -132,6 +134,7 @@
             border-color: var(--primary-gold);
         }
 
+        /* ================= هدر ================= */
         header {
             display: flex;
             flex-direction: column;
@@ -150,7 +153,6 @@
             padding: 0.2rem 0;
         }
 
-        /* ================= لوگوها ================= */
         .logo-wrapper {
             position: relative;
             width: 90px;
@@ -234,6 +236,7 @@
             font-weight: 500;
         }
 
+        /* ================= تیکر ================= */
         .ticker-container {
             width: 100%;
             background: var(--ticker-bg);
@@ -286,6 +289,7 @@
             100% { transform: translateX(-50%); }
         }
 
+        /* ================= چیدمان اصلی ================= */
         main {
             flex: 1;
             display: flex;
@@ -347,6 +351,7 @@
 
         [data-theme="dark"] .poster-wrapper img { background: #1a1a2e; }
 
+        /* ================= کارت‌ها ================= */
         .mini-card {
             backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
@@ -495,17 +500,33 @@
             box-shadow: 0 6px 20px rgba(255, 107, 157, 0.5);
         }
 
+        /* ================= ریسپانسیو: تبلت ================= */
         @media (max-width: 900px) {
-            html, body { overflow: auto; height: auto; min-height: 100vh; }
-            body { display: block; }
+            html, body { overflow-y: auto; overflow-x: hidden; height: auto; min-height: 100vh; }
+            body { display: block; height: auto; }
+            main { overflow: visible; height: auto; padding: 0.5rem 1rem 1rem; }
             .main-layout {
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows: auto auto auto auto;
                 gap: 0.8rem;
                 height: auto;
             }
-            .poster-center { grid-column: 1 / span 2; grid-row: 1; max-height: 38vh; }
-            .poster-wrapper { max-height: 38vh; }
+            .poster-center { 
+                grid-column: 1 / span 2; 
+                grid-row: 1; 
+                max-height: none; 
+                height: auto;
+            }
+            .poster-wrapper { 
+                max-height: none; 
+                max-width: 60%;
+                margin: 0 auto;
+            }
+            .poster-wrapper img {
+                max-height: none;
+                width: 100%;
+                height: auto;
+            }
             .contact-in-grid { grid-column: 1 / span 2; grid-row: 2; }
             .card-1 { grid-column: 1; grid-row: 3; }
             .card-2 { grid-column: 2; grid-row: 3; }
@@ -516,26 +537,67 @@
             .logo-wrapper { width: 70px; height: 70px; }
         }
 
-        @media (max-width: 500px) {
+        /* ================= ریسپانسیو: موبایل ================= */
+        @media (max-width: 600px) {
             .main-layout {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
                 grid-template-rows: auto;
+                gap: 0.6rem;
             }
-            .poster-center { grid-column: 1; grid-row: 1; max-height: 32vh; }
-            .poster-wrapper { max-height: 32vh; }
-            .contact-in-grid { grid-column: 1; grid-row: 2; }
-            .card-1 { grid-column: 1; grid-row: 3; }
-            .card-2 { grid-column: 1; grid-row: 4; }
-            .card-3 { grid-column: 1; grid-row: 5; }
-            .card-4 { grid-column: 1; grid-row: 6; }
-            .mini-card { max-width: 100%; width: 100%; }
+            /* پوستر کوچک‌تر در بالا */
+            .poster-center { 
+                grid-column: 1 / span 2; 
+                grid-row: 1; 
+                max-height: none;
+                height: auto;
+            }
+            .poster-wrapper { 
+                max-height: none; 
+                max-width: 50%;
+                margin: 0 auto;
+            }
+            .poster-wrapper img {
+                max-height: none;
+                width: 100%;
+                height: auto;
+            }
+            /* ۴ کارت بلافاصله زیر پوستر - دو تا دو تا */
+            .card-1 { grid-column: 1; grid-row: 2; }
+            .card-2 { grid-column: 2; grid-row: 2; }
+            .card-3 { grid-column: 1; grid-row: 3; }
+            .card-4 { grid-column: 2; grid-row: 3; }
+            .mini-card { 
+                max-width: 100%; 
+                width: 100%; 
+                padding: 0.6rem 0.4rem;
+            }
+            .mini-card h3 { font-size: 0.7rem; }
+            .mini-card p { font-size: 0.55rem; }
+            .mini-card-icon { width: 36px; height: 36px; font-size: 1.1rem; }
+            /* ماژول‌های تماس در انتها */
+            .contact-in-grid { 
+                grid-column: 1 / span 2; 
+                grid-row: 4; 
+                padding: 0.6rem 0;
+            }
+            .email-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.4rem;
+                width: 100%;
+            }
+            .email-btn { 
+                font-size: 0.65rem; 
+                padding: 0.45rem 0.8rem; 
+                width: 100%;
+                justify-content: center;
+            }
             .controls { flex-direction: row; gap: 5px; }
             .control-btn { padding: 5px 10px; font-size: 0.7rem; }
             .logo-wrapper { width: 55px; height: 55px; }
-            .hero-title { font-size: 1.1rem; }
-            .hero-subtitle { font-size: 0.75rem; }
-            .hero-desc { font-size: 0.65rem; }
-            .email-btn { font-size: 0.6rem; padding: 0.35rem 0.6rem; }
+            .hero-title { font-size: 1.2rem; }
+            .hero-subtitle { font-size: 0.8rem; }
+            .hero-desc { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -557,7 +619,7 @@
 
     <header>
         <div class="header-top">
-            <!-- ✅ لوگوی انگلیسی -->
+            <!-- لوگوی انگلیسی -->
             <div class="logo-wrapper">
                 <img src="logo-en.png" alt="English Logo">
             </div>
@@ -568,7 +630,7 @@
                 <p class="hero-desc" id="title-desc">محقق، پژوهشگر مستقل و کنشگر مدنی</p>
             </div>
 
-            <!-- ✅ لوگوی فارسی - نام صحیح: logo-fr.png -->
+            <!-- لوگوی فارسی -->
             <div class="logo-wrapper">
                 <img src="logo-fr.png" alt="لوگوی فارسی">
             </div>
@@ -588,7 +650,7 @@
 
     <main>
         <div class="main-layout">
-                      <a href="https://cultural-id.vercel.app/index.html" target="_blank" class="mini-card card-1">
+            <a href="https://cultural-id.vercel.app/index.html" target="_blank" class="mini-card card-1">
                 <div class="mini-card-icon">🌍</div>
                 <h3 id="card1-title">کارت جهانی هویت هوشمند فرهنگی</h3>
                 <p id="card1-desc">Global Smart Cultural ID</p>
@@ -669,7 +731,7 @@
                 titleSub: 'Dr. Gholamreza Rezaei',
                 titleDesc: 'محقق، پژوهشگر مستقل و کنشگر مدنی',
                 ticker: '<span>برای آینده‌ای روشن‌تر</span><span>هوش مصنوعی، فرهنگ و تمدن</span><span>پژوهش، نوآوری و کنشگری مدنی</span><span>برای آینده‌ای روشن‌تر</span><span>هوش مصنوعی، فرهنگ و تمدن</span><span>پژوهش، نوآوری و کنشگری مدنی</span>',
-                card1Title:  'کارت جهانی هویت هوشمند فرهنگی',
+                card1Title: 'کارت جهانی هویت هوشمند فرهنگی',
                 card1Desc: 'Global Smart Cultural ID',
                 card2Title: 'رادیوتلویزیون هوشمند',
                 card2Desc: 'Smart AI TV',
