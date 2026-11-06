@@ -306,7 +306,7 @@
             max-width: 1200px;
             display: grid;
             grid-template-columns: 1fr 1.3fr 1fr;
-            grid-template-rows: 1fr 1fr auto;
+            grid-template-rows: 1fr 1fr auto auto;
             gap: 0.8rem;
             align-items: center;
             justify-items: center;
@@ -375,11 +375,13 @@
         .card-2 { background: linear-gradient(135deg, rgba(79, 172, 254, 0.35), rgba(109, 213, 237, 0.2)); }
         .card-3 { background: linear-gradient(135deg, rgba(243, 156, 18, 0.35), rgba(245, 197, 66, 0.2)); }
         .card-4 { background: linear-gradient(135deg, rgba(161, 140, 209, 0.35), rgba(195, 174, 214, 0.2)); }
+        .card-5 { background: linear-gradient(135deg, rgba(46, 204, 113, 0.35), rgba(88, 214, 141, 0.2)); }
 
         [data-theme="dark"] .card-1 { background: linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(255, 143, 171, 0.1)); }
         [data-theme="dark"] .card-2 { background: linear-gradient(135deg, rgba(79, 172, 254, 0.2), rgba(109, 213, 237, 0.1)); }
         [data-theme="dark"] .card-3 { background: linear-gradient(135deg, rgba(243, 156, 18, 0.2), rgba(245, 197, 66, 0.1)); }
         [data-theme="dark"] .card-4 { background: linear-gradient(135deg, rgba(161, 140, 209, 0.2), rgba(195, 174, 214, 0.1)); }
+        [data-theme="dark"] .card-5 { background: linear-gradient(135deg, rgba(46, 204, 113, 0.2), rgba(88, 214, 141, 0.1)); }
 
         .mini-card::before {
             content: '';
@@ -420,6 +422,7 @@
         .card-2 .mini-card-icon { background: linear-gradient(135deg, #4facfe, #6dd5ed); box-shadow: 0 3px 12px rgba(79, 172, 254, 0.4); }
         .card-3 .mini-card-icon { background: linear-gradient(135deg, #f39c12, #f5c542); box-shadow: 0 3px 12px rgba(243, 156, 18, 0.4); }
         .card-4 .mini-card-icon { background: linear-gradient(135deg, #a18cd1, #c3aed6); box-shadow: 0 3px 12px rgba(161, 140, 209, 0.4); }
+        .card-5 .mini-card-icon { background: linear-gradient(135deg, #2ecc71, #58d68d); box-shadow: 0 3px 12px rgba(46, 204, 113, 0.4); }
 
         .mini-card:hover .mini-card-icon { transform: rotate(10deg) scale(1.15); }
 
@@ -442,14 +445,16 @@
             line-height: 1.2;
         }
 
+        /* چیدمان کارت‌ها: 2 بالا، 3 پایین + پوستر وسط */
         .card-1 { grid-column: 1; grid-row: 1; }
         .card-2 { grid-column: 3; grid-row: 1; }
         .card-3 { grid-column: 1; grid-row: 2; }
         .card-4 { grid-column: 3; grid-row: 2; }
+        .card-5 { grid-column: 1 / span 3; grid-row: 3; max-width: 320px; }
 
         .contact-in-grid {
             grid-column: 2;
-            grid-row: 3;
+            grid-row: 4;
             width: 100%;
             display: flex;
             justify-content: center;
@@ -507,7 +512,7 @@
             main { overflow: visible; height: auto; padding: 0.5rem 1rem 1rem; }
             .main-layout {
                 grid-template-columns: 1fr 1fr;
-                grid-template-rows: auto auto auto auto;
+                grid-template-rows: auto auto auto auto auto;
                 gap: 0.8rem;
                 height: auto;
             }
@@ -527,11 +532,12 @@
                 width: 100%;
                 height: auto;
             }
-            .contact-in-grid { grid-column: 1 / span 2; grid-row: 2; }
-            .card-1 { grid-column: 1; grid-row: 3; }
-            .card-2 { grid-column: 2; grid-row: 3; }
-            .card-3 { grid-column: 1; grid-row: 4; }
-            .card-4 { grid-column: 2; grid-row: 4; }
+            .card-1 { grid-column: 1; grid-row: 2; }
+            .card-2 { grid-column: 2; grid-row: 2; }
+            .card-3 { grid-column: 1; grid-row: 3; }
+            .card-4 { grid-column: 2; grid-row: 3; }
+            .card-5 { grid-column: 1 / span 2; grid-row: 4; max-width: 60%; }
+            .contact-in-grid { grid-column: 1 / span 2; grid-row: 5; }
             .hero-title { font-size: 1.4rem; }
             .hero-subtitle { font-size: 0.9rem; }
             .logo-wrapper { width: 70px; height: 70px; }
@@ -544,7 +550,6 @@
                 grid-template-rows: auto;
                 gap: 0.6rem;
             }
-            /* پوستر کوچک‌تر در بالا */
             .poster-center { 
                 grid-column: 1 / span 2; 
                 grid-row: 1; 
@@ -561,11 +566,11 @@
                 width: 100%;
                 height: auto;
             }
-            /* ۴ کارت بلافاصله زیر پوستر - دو تا دو تا */
             .card-1 { grid-column: 1; grid-row: 2; }
             .card-2 { grid-column: 2; grid-row: 2; }
             .card-3 { grid-column: 1; grid-row: 3; }
             .card-4 { grid-column: 2; grid-row: 3; }
+            .card-5 { grid-column: 1 / span 2; grid-row: 4; max-width: 90%; }
             .mini-card { 
                 max-width: 100%; 
                 width: 100%; 
@@ -574,10 +579,9 @@
             .mini-card h3 { font-size: 0.7rem; }
             .mini-card p { font-size: 0.55rem; }
             .mini-card-icon { width: 36px; height: 36px; font-size: 1.1rem; }
-            /* ماژول‌های تماس در انتها */
             .contact-in-grid { 
                 grid-column: 1 / span 2; 
-                grid-row: 4; 
+                grid-row: 5; 
                 padding: 0.6rem 0;
             }
             .email-links {
@@ -619,7 +623,6 @@
 
     <header>
         <div class="header-top">
-            <!-- لوگوی انگلیسی -->
             <div class="logo-wrapper">
                 <img src="logo-en.png" alt="English Logo">
             </div>
@@ -630,7 +633,6 @@
                 <p class="hero-desc" id="title-desc">محقق، پژوهشگر مستقل و کنشگر مدنی</p>
             </div>
 
-            <!-- لوگوی فارسی -->
             <div class="logo-wrapper">
                 <img src="logo-fr.png" alt="لوگوی فارسی">
             </div>
@@ -678,6 +680,13 @@
                 <div class="mini-card-icon">🆔</div>
                 <h3 id="card4-title">شناسنامه پژوهشی (ORCID)</h3>
                 <p id="card4-desc">ORCID Research Profile</p>
+            </a>
+
+            <!-- ✅ کارت جدید: سامانه سرمایه انسانی بنیاد شهید -->
+            <a href="https://B2n.ir/bonyad-aisystem" target="_blank" class="mini-card card-5">
+                <div class="mini-card-icon">🏛️</div>
+                <h3 id="card5-title">سامانه یکپارچه سرمایه انسانی</h3>
+                <p id="card5-desc">Bonyad HR Smart System</p>
             </a>
 
             <div class="contact-in-grid">
@@ -738,7 +747,9 @@
                 card3Title: 'انجمن علمی هوش مصنوعی، فرهنگ و تمدن',
                 card3Desc: 'Sphere of AI Culture & Civilization',
                 card4Title: 'شناسنامه پژوهشی (ORCID)',
-                card4Desc: 'ORCID Research Profile'
+                card4Desc: 'ORCID Research Profile',
+                card5Title: 'سامانه یکپارچه سرمایه انسانی',
+                card5Desc: 'Bonyad HR Smart System'
             },
             en: {
                 langBtn: '🌐 FA',
@@ -755,7 +766,9 @@
                 card3Title: 'Sphere of AI Culture & Civilization',
                 card3Desc: 'انجمن علمی هوش مصنوعی، فرهنگ و تمدن',
                 card4Title: 'ORCID Research Profile',
-                card4Desc: 'شناسنامه پژوهشی (ORCID)'
+                card4Desc: 'شناسنامه پژوهشی (ORCID)',
+                card5Title: 'Bonyad HR Smart System',
+                card5Desc: 'سامانه یکپارچه سرمایه انسانی'
             }
         };
 
@@ -776,6 +789,8 @@
             document.getElementById('card3-desc').textContent = t.card3Desc;
             document.getElementById('card4-title').textContent = t.card4Title;
             document.getElementById('card4-desc').textContent = t.card4Desc;
+            document.getElementById('card5-title').textContent = t.card5Title;
+            document.getElementById('card5-desc').textContent = t.card5Desc;
             
             langToggle.textContent = t.langBtn;
             
